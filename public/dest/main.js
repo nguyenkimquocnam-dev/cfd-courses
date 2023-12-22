@@ -303,29 +303,29 @@ $(document).ready(function () {
   coursePage();
 
   // ========================= DROPDOWN ===========================
-  function hideDropDown() {
-    let dropdown = $(".dropdown");
-    dropdown.removeClass("active");
-  }
-  function dropDown() {
-    let btndropdown = $("[data-dropdown]"),
-      dropdown = $(".dropdown");
-    btndropdown.on("click", function (e) {
-      e.stopPropagation();
-      let data = $(this).attr("data-dropdown");
-      dropdown.removeClass("active");
-      $(`.${data}`).toggleClass("active");
-      // closeMenu();
-    });
-    dropdown.on("click", function (e) {
-      e.stopPropagation();
-    });
+  // function hideDropDown() {
+  //   let dropdown = $(".dropdown");
+  //   dropdown.removeClass("active");
+  // }
+  // function dropDown() {
+  //   let btndropdown = $("[data-dropdown]"),
+  //     dropdown = $(".dropdown");
+  //   btndropdown.on("click", function (e) {
+  //     e.stopPropagation();
+  //     let data = $(this).attr("data-dropdown");
+  //     dropdown.removeClass("active");
+  //     $(`.${data}`).toggleClass("active");
+  //     // closeMenu();
+  //   });
+  //   dropdown.on("click", function (e) {
+  //     e.stopPropagation();
+  //   });
 
-    $(document).click(function () {
-      hideDropDown();
-    });
-  }
-  dropDown();
+  //   $(document).click(function () {
+  //     hideDropDown();
+  //   });
+  // }
+  // dropDown();
 
   //================== SELECT PAYMENT METHOD =====================
 

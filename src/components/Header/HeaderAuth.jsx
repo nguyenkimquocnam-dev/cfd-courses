@@ -9,8 +9,6 @@ const HeaderAuth = () => {
   const { handleShowModal, handleLogout, profile } = useAuthContext();
   const [isShowDropdown, setIsDropdown] = useState(false);
   const navigate = useNavigate();
-  const isLogin = tokenMethod.get();
-  const { profileImage, firstName } = profile;
   useEffect(() => {
     document.addEventListener("click", _onCloseDropdown);
 
@@ -18,6 +16,9 @@ const HeaderAuth = () => {
       document.removeEventListener("click", _onCloseDropdown);
     };
   }, []);
+
+  const { profileImage, firstName } = profile;
+  const isLogin = tokenMethod.get();
 
   const _onLoginClick = (e) => {
     e.stopPropagation();
@@ -29,9 +30,9 @@ const HeaderAuth = () => {
     handleShowModal(MODAL_TYPES.register);
   };
 
-  const _onShowDropdown = (e) => {
+  const _onToggleDropdown = (e) => {
     e.stopPropagation();
-    setIsDropdown(true);
+    setIsDropdown(!isShowDropdown);
   };
 
   const _onCloseDropdown = (e) => {
@@ -65,7 +66,7 @@ const HeaderAuth = () => {
           <div
             className="userlogged__avatar user"
             data-dropdown="userlogged__dropdown"
-            onClick={_onShowDropdown}
+            onClick={_onToggleDropdown}
           >
             <div className="userlogged__avatar-img user__img">
               <img

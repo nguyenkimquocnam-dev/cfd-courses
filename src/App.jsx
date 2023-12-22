@@ -16,6 +16,7 @@ import MyInfo from "./pages/StudentProfilePage/MyInfo";
 import MyCourse from "./pages/StudentProfilePage/MyCourse";
 import MyPayment from "./pages/StudentProfilePage/MyPayment";
 import { PATHS } from "./constant/path";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -28,10 +29,17 @@ function App() {
           <Route path={PATHS.PAYMENT_METHOD} element={<PaymentMethodPage />} />
           <Route path={PATHS.PRIVACY} element={<PrivacyPage />} />
 
-          <Route path={PATHS.PROFILE.INDEX} element={<StudentProfilePage />}>
-            <Route index element={<MyInfo />} />
-            <Route path={PATHS.PROFILE.MY_COURSE} element={<MyCourse />} />
-            <Route path={PATHS.PROFILE.MY_PAYMENT} element={<MyPayment />} />
+          {/* Private Route */}
+          <Route element={<PrivateRoute />}>
+            <Route
+              path={PATHS.COURSE.ORDER_DETAIL}
+              element={<CourseOrderPage />}
+            />
+            <Route path={PATHS.PROFILE.INDEX} element={<StudentProfilePage />}>
+              <Route index element={<MyInfo />} />
+              <Route path={PATHS.PROFILE.MY_COURSE} element={<MyCourse />} />
+              <Route path={PATHS.PROFILE.MY_PAYMENT} element={<MyPayment />} />
+            </Route>
           </Route>
 
           <Route path={PATHS.BLOG.INDEX} element={<BlogPage />} />
@@ -39,10 +47,6 @@ function App() {
 
           <Route path={PATHS.COURSE.INDEX} element={<CoursePage />} />
           <Route path={PATHS.COURSE.DETAIL} element={<CourseDetailPage />} />
-          <Route
-            path={PATHS.COURSE.ORDER_DETAIL}
-            element={<CourseOrderPage />}
-          />
 
           <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
         </Route>
