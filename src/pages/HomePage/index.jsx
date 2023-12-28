@@ -1,6 +1,9 @@
 import React from "react";
 import useQuery from "../../hooks/useQuery";
 import { courseService } from "../../services/courseService";
+import { galleryService } from "../../services/galleryService";
+import { questionService } from "../../services/questionService";
+import { teamService } from "../../services/teamService";
 import CallRegisterSection from "./CallRegisterSection";
 import CourseComingSection from "./CourseComingSection";
 import CoursesSection from "./CoursesSection";
@@ -10,9 +13,6 @@ import GallerySection from "./GallerySection";
 import HeroSection from "./HeroSection";
 import TeacherSection from "./TeacherSection";
 import TestimonialSection from "./TestimonialSection";
-import { teamService } from "../../services/teamService";
-import { questionService } from "../../services/questionService";
-import { galleryService } from "../../services/galleryService";
 
 const HomePage = () => {
   // Courses Service

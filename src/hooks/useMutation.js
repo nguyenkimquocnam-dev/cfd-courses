@@ -5,7 +5,7 @@ const useMutation = (promise) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-  const excute = async (payload, options) => {
+  const execute = async (payload, options) => {
     const { onSuccess, onFail } = options || {};
     setLoading(true);
     try {
@@ -22,7 +22,7 @@ const useMutation = (promise) => {
     }
   };
   return {
-    excute,
+    execute,
     data,
     loading,
     error,

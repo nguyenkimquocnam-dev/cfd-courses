@@ -8,5 +8,5 @@ export const formatCurrency = (data, type = "vi-VN") => {
 
 export const formatDate = (date, format = TIME_DISPLAY.DATE) => {
   if (!!!date) return "";
-  return moment(date).format(format);
+  return moment.utc(date).format(format);
 };

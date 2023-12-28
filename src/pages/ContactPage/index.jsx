@@ -9,7 +9,7 @@ import ContactTitle from "./ContactTitle";
 
 const ContactPage = () => {
   const navigate = useNavigate();
-  const { excute, data, error, loading } = useMutation((payload) =>
+  const { execute, data, error, loading } = useMutation((payload) =>
     subscribesService.subscribes(payload)
   );
 
@@ -24,7 +24,7 @@ const ContactPage = () => {
       description: formData.content || "",
     };
 
-    excute?.(payload, {
+    execute?.(payload, {
       onSuccess: (data) => {
         console.log("data", data);
         navigate(PATHS.HOME);
