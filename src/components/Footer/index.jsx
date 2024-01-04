@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { PATHS } from "../../constant/path";
 
 const Footer = () => {
   return (
@@ -9,13 +11,13 @@ const Footer = () => {
             <h3 className="label">Thông tin</h3>
             <ul>
               <li>
-                <a href="about.html">Về CFD Circle</a>
+                <Link to={PATHS.ABOUT}>Về CFD Circle</Link>
               </li>
               <li>
-                <a href="courses.html">Khóa học</a>
+                <Link to={PATHS.COURSE.INDEX}>Khóa học</Link>
               </li>
               <li>
-                <a href="blog.html">Bài viết</a>
+                <Link to={PATHS.BLOG.INDEX}>Bài viết</Link>
               </li>
             </ul>
           </div>
@@ -23,13 +25,13 @@ const Footer = () => {
             <h3 className="label">Hỗ trợ</h3>
             <ul>
               <li>
-                <a href="contact.html">Trung tâm hỗ trợ</a>
+                <Link to={PATHS.CONTACT}>Trung tâm hỗ trợ</Link>
               </li>
               <li>
-                <a href="payment-method.html">Phương thức thanh toán</a>
+                <Link to={PATHS.PAYMENT_METHOD}>Phương thức thanh toán</Link>
               </li>
               <li>
-                <a href="privacy.html">Chính sách và điều khoản</a>
+                <Link to={PATHS.PRIVACY}>Chính sách và điều khoản</Link>
               </li>
             </ul>
           </div>
@@ -42,7 +44,7 @@ const Footer = () => {
                   target="_blank"
                 >
                   <i>
-                    <img src="img/icon-cfd-footer.svg" alt />
+                    <img src="/img/icon-cfd-footer.svg" alt />
                   </i>
                   <span>Cộng đồng</span>
                 </a>
@@ -50,7 +52,7 @@ const Footer = () => {
               <li>
                 <a href="https://www.facebook.com/cfdcircle" target="_blank">
                   <i>
-                    <img src="img/icon-fb-footer.svg" alt />
+                    <img src="/img/icon-fb-footer.svg" alt />
                   </i>
                   <span>Facebook</span>
                 </a>
@@ -58,7 +60,7 @@ const Footer = () => {
               <li>
                 <a href="https://www.youtube.com/cfdcircle" target="_blank">
                   <i>
-                    <img src="img/icon-ytb-ft.svg" alt />
+                    <img src="/img/icon-ytb-ft.svg" alt />
                   </i>
                   <span>Youtube</span>
                 </a>
@@ -71,7 +73,7 @@ const Footer = () => {
               <li>
                 <a href="https://goo.gl/maps/RnCAPv3CBjUgTUFd8" target="_blank">
                   <i>
-                    <img src="img/icon-address.svg" alt />
+                    <img src="/img/icon-address.svg" alt />
                   </i>
                   <span>666/46/29 Ba Tháng Hai, phường 14, quận 10, TPHCM</span>
                 </a>
@@ -79,7 +81,7 @@ const Footer = () => {
               <li>
                 <a href="tel:0989596913">
                   <i>
-                    <img src="img/icon-phone.svg" alt />
+                    <img src="/img/icon-phone.svg" alt />
                   </i>
                   <span>(+84) 98 9596 913</span>
                 </a>
@@ -87,7 +89,7 @@ const Footer = () => {
               <li>
                 <a href="mailto:info@cfdcircle.vn">
                   <i>
-                    <img src="img/icon-mail.svg" alt />
+                    <img src="/img/icon-mail.svg" alt />
                   </i>
                   <span>info@cfdcircle.vn</span>
                 </a>
@@ -97,11 +99,11 @@ const Footer = () => {
         </div>
         <div className="bottom">
           <div className="copyright">
-            <img src="img/icon-footer-copy.svg" alt />
+            <img src="/img/icon-footer-copy.svg" alt />
             <span>© 2023 CFD Circle</span>
           </div>
           <a href="./" target="_blank" className="logobct">
-            <img src="img/logo-bo-cong-thuong.png" alt />
+            <img src="/img/logo-bo-cong-thuong.png" alt />
           </a>
         </div>
       </div>

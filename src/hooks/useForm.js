@@ -25,6 +25,7 @@ const useForm = (initialValue, rules) => {
 
   return {
     form,
+    setForm,
     validate: _validate,
     register,
   };

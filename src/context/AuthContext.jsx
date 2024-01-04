@@ -4,18 +4,23 @@ import { message } from "antd";
 import tokenMethod from "../utils/token";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../constant/path";
+import { orderService } from "../services/orderService";
 
 export const AuthContext = createContext({});
 
 const AuthContextProvider = ({ children }) => {
   const [showedModal, setShowedModal] = useState("");
   const [profile, setProfile] = useState({});
+  const [courseInfo, setCourseInfo] = useState([]);
+  const [paymentInfo, setPaymentInfo] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const accessToken = !!tokenMethod.get()?.accessToken;
     if (accessToken) {
       handleGetProfile();
+      handleGetProfileCourse();
+      handleGetProfilePayment();
     }
   }, []);
 
@@ -44,6 +49,8 @@ const AuthContextProvider = ({ children }) => {
 
         // Get profile
         handleGetProfile();
+        handleGetProfileCourse();
+        handleGetProfilePayment();
 
         // Notify success and close modal
         message.success("Đăng nhập thành công");
@@ -113,6 +120,54 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  // Handle get profile info
+  const handleGetProfileCourse = async () => {
+    try {
+      const res = await orderService.getCourseHistories();
+      if (res?.data?.data) {
+        setCourseInfo(res.data.data?.orders);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  // Handle get course info
+  const handleGetProfilePayment = async () => {
+    try {
+      const res = await orderService.getPaymentHistories();
+      if (res?.data?.data) {
+        setPaymentInfo(res.data.data?.orders);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  // Handle update profile
+  const handleUpdateProfile = async (profileData) => {
+    try {
+      const { firstName, email, facebookURL, introduce, phone, website } =
+        profileData || {};
+      const payload = {
+        firstName,
+        lastName: "",
+        email,
+        facebookURL,
+        website,
+        phone,
+        introduce,
+      };
+      const res = await authService.updateProfile(payload);
+      if (res?.data?.data?.id) {
+        message.success("Cập nhật thông tin thành công");
+        handleGetProfile();
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -122,7 +177,12 @@ const AuthContextProvider = ({ children }) => {
         handleLogin,
         handleRegister,
         handleLogout,
+        handleGetProfileCourse,
+        handleGetProfilePayment,
+        handleUpdateProfile,
         profile,
+        courseInfo,
+        paymentInfo,
       }}
     >
       {children}

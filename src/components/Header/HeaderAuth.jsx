@@ -51,7 +51,7 @@ const HeaderAuth = () => {
       <div class="header__auth">
         <a
           // href="javascript:void(0)"
-          class="btn btn--transparent btnmodal"
+          className="btn btn--transparent btnmodal"
           data-modal="mdlogin"
         >
           <span onClick={_onRegisterClick}>Đăng ký /&nbsp;</span>

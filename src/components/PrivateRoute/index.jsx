@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import tokenMethod from "../../utils/token";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
@@ -9,14 +9,20 @@ const PrivateRoute = ({ redirectPath = "" }) => {
   const navigate = useNavigate();
   const isLogin = !!tokenMethod.get();
 
+  useEffect(() => {
+    if (!isLogin) {
+      handleShowModal?.(MODAL_TYPES.login);
+    }
+  }, [handleShowModal]);
+
   if (!isLogin) {
-    handleShowModal?.(MODAL_TYPES.login);
     if (!!redirectPath) {
       return <Navigate to={redirectPath} />;
     } else {
       navigate(-1);
     }
   }
+
   return (
     <>
       <Outlet />

@@ -12,6 +12,8 @@ import CoursesSection from "./CoursesSection";
 import FeaturedSection from "./FeaturedSection";
 import HeaderTop from "./HeaderTop";
 import HeroSection from "./HeroSection";
+import useDebounce from "../../hooks/useDebounce";
+import PageLoading from "../../components/PageLoading";
 
 const CourseDetailPage = () => {
   const { courseSlug } = useParams();
@@ -33,7 +35,7 @@ const CourseDetailPage = () => {
 
   const modifiedProps = {
     ...courseDetailData,
-    teacherInfo: teams?.find((item) => item.tags.includes(ROLES.teacher)),
+    teacherInfo: teams?.find((item) => item.tags.includes(ROLES.teacher)) || {},
     startDate: formatDate(startDate || ""),
     price: formatCurrency(price),
     orderLink,
@@ -51,9 +53,17 @@ const CourseDetailPage = () => {
   );
   const courses = coursesData?.courses || [];
 
+  const apiLoading = courseDetailLoading || questionsLoading || coursesLoading;
+
+  const pageLoading = useDebounce(apiLoading, 500);
+
+  if (pageLoading) {
+    return <PageLoading />;
+  }
+
   return (
     <>
-      <HeaderTop />
+      <HeaderTop {...modifiedProps} />
       <main className="mainwrapper coursedetailpage">
         <HeroSection {...modifiedProps} />
         <ContentDetailSection {...modifiedProps} />

@@ -1,5 +1,4 @@
 import axiosInstance from "../utils/axiosInstance";
-import tokenMethod from "../utils/token";
 
 export const authService = {
   login: (payload) => {
@@ -10,5 +9,12 @@ export const authService = {
   },
   getProfile: () => {
     return axiosInstance.get("/customer/profiles");
+  },
+  updateProfile: (payload) => {
+    return axiosInstance.put("/customer/profiles", payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 };

@@ -10,7 +10,9 @@ const Accordion = ({ label = "", data = [], defaultActiveIndex = -1 }) => {
   };
   return (
     <div className="accordion">
-      {!!label && <h3 className="accordion__title label">{label}</h3>}
+      {/* {!!label && <h3 className="accordion__title label">{label}</h3>} */}
+      <h3 className="accordion__title label">{!!label && label}</h3>
+
       {data?.length === 0 ? (
         <Empty description="Không có nội dung nào" />
       ) : (
